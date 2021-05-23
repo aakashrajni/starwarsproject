@@ -17,14 +17,12 @@ const HomeScreen = ({navigation}) => {
   const [people,setPeople] = useState([])
   const [filterPeople,setFilterPeople] = useState([])
   const [nextUrl,setNextUrl] = useState("")
-  const [loading,setLoading] = useState(true)
   const [filterKey,setFilterKey] = useState("All")
   const [checkFilter,setCheckFilter] = useState(false)
 
 
   useEffect(() => {
     UseFetchPeople(setPeople, setNextUrl)
-    setLoading(false)
   },[])
 
   useEffect(() => {
@@ -43,11 +41,6 @@ const HomeScreen = ({navigation}) => {
   const renderItem = ({ item }) => (
     <ListItem title={item.name} item={item} navigation={navigation} />
   );
-
-  if(loading)
-    return (
-        <CustomActivityIndicator />
-    )
 
   return (
     <SafeAreaView style={styles.backgroundStyle}>
